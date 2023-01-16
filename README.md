@@ -1,4 +1,4 @@
-# Create a Weather Dashboard using Server-Side APIs
+# Weather Dashboard Application
 
 ## Description
 
@@ -33,19 +33,11 @@ When building a wether dashboard application using API's from other developers I
 
 ## Assets
 
-### Screenshots
-
-PIC
-<!-- Make sure to resize the pictures so they fit appropriately  -->
-![](./assets/####)
-
-PIC
-
-![](./assets/####)
-
-PIC
-
-![](./assets/####)
+* js
+* html
+* css
+* jquery
+* open weather map
 
 ## Deployment
 
