@@ -1,7 +1,8 @@
 // Api Key
 const apiKey = "711afb584510341f02a090829b0383fc";
 // User input searching for specific city 
-let cityInput = document.querySelector('#city-name')
+let cityInput = document.querySelector('#city-name');
+let currentCity = document.querySelector('#city-current');
 // Search Btn
 let searchButton = document.querySelector('#search-button');
 // Weather conditions 
@@ -19,15 +20,15 @@ const searchWeatherForm = (event) => {
     console.log(currCity);
     if (currCity) {
     cityInput.value = "";
-    const apiCall = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&limit=1&appid=${apiKey}`;
+    const apiCall = `https://api.openweathermap.org/geo/1.0/direct?q=${cityInput}&limit=5&appid=${apiKey}`;
     //fetch req for city
     fetch(apiCall).then(data => data.json())
     .then(data => {
     console.log(data);
-    
+    let { lat, lon } = data.currCity.coord;   
     // original api call needed to get city data
-    let wfApi = `http://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
-    let { lat, lon } = data.coordinates; 
+    let wfApi = `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=5&appid=${apiKey}`;
+   
     // fetch pt 2
     fetch(wfApi).then(response => {
         return response.json(); 
@@ -36,7 +37,7 @@ const searchWeatherForm = (event) => {
     .then(data => {
         console.log(data);
 
-        let currWeather = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
+        let currWeather = `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=5&appid=${apiKey}}`;
         //fetch the weather data
         fetch(currWeather)
         .then(response =>{
