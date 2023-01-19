@@ -1,3 +1,5 @@
+const { response } = require("express");
+
 // Api Key
 const apiKey = "711afb584510341f02a090829b0383fc";
 // User input searching for specific city 
@@ -30,6 +32,20 @@ const searchWeatherForm = (event) => {
     fetch(wfApi)
     .then(response => {
         return response.json(); 
+    })
+    // getting the weather data
+    .then(data => {
+        console.log(data);
+
+        let currWeather = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
+        //fetch the weather data
+        fetch(currWeather)
+        .then(response =>{
+            return response.json();
+        })
+        .then(data => {
+            fu
+        })
     })
 
     })
