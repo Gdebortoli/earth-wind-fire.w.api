@@ -19,7 +19,7 @@ const futureWeather = document.querySelector('#futureWeather');
 //Search History
 let prevSearch = document.querySelector('#past-searches');
 let storedHistory = JSON.parse(localStorage.getItem('cityHistory'));
-console.log(savedHistory);
+console.log(storedHistory);
 if (!searchedHist) var searchedHist = [];
 
 // Getting coordinates to use in search for city api
@@ -49,10 +49,10 @@ var getCoordinates = function (searchParam) {
 const searchWeatherForm = function (event) {
     event.preventDefault();
     currCitySearch = cityInput.value.trim();
-    console.log(currCitySearch);
+    // console.log("currCitySearch");
     getCoordinates(currCitySearch)
     .then(function (data) {
-        curLat = data.latitude; 
+        curLat = data.lattitude; 
         curLong = data.longitude;
 
         window.localStorage.setItem("cityHistory", JSON.stringify(storedHistory));
@@ -60,16 +60,35 @@ const searchWeatherForm = function (event) {
     // display current weather
         currentWeatherDisplay(); 
     // UV index 
-        uVIUrl = "https://api.openweathermap.org/data/2.5/air_pollution?lat=" + curLat + "&lon=" + curlLong + "&appid=" + apiKey + "&units=imperial";
+        uVIUrl = "https://api.openweathermap.org/data/2.5/air_pollution?lat=" + curLat + "&lon=" + curLong + "&appid=" + apiKey + "&units=imperial";
     // Display Weather forecast
-        fivedwUrl = forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + curLat + "&lon=" + curLon + "&appid=" + apiKey + "&units=imperial";
+        fivedwUrl = forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + curLat + "&lon=" + curLong + "&appid=" + apiKey + "&units=imperial";
         fiveDayWeatherDisplay();
     // add search history
         searchedHist.push(currCitySearch);
-        console.log("searchedHist");
-        
-    })
 
+        cityInput.value = ""; 
+        console.log(JSON.parse(window.localStorage.getItem("cityHistory")));
+    }); 
+}
+
+// Search History Display fx
+
+
+
+// Current weather Display fx 
+const currentWeatherDisplay = function () {
+
+}
+
+// 5 day forecast fx
+const fiveDayWeatherDisplay = function () {
+
+}
+
+
+
+document.getElementById('search-button').onclick = searchWeatherForm;
 
 
 
@@ -110,18 +129,5 @@ const searchWeatherForm = function (event) {
 //         alert("Missing Information. Please enter a city name.");
 //     }
 // };
-// Current weather Display
-const currentWeatherDisplay = function () {
 
-}
 
-// 5 day forecast 
-const fiveDayWeatherDisplay = function () {
-
-}
-
-// Past Searches 
-
-document.getElementById('search-button').onclick = searchWeatherForm;
-
-}
