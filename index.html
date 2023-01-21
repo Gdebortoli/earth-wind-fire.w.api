@@ -27,79 +27,134 @@
         <header>
 
 
-                <!-- Nav Header -->
-                <header>
-                    <nav class="navbar bg-tertiary">
-                        <div class="container-fluid text-bg-dark">
-                            <span class="navbar-brand mb-0 h1">
-                                <h1 class="align-middle"><i class="fa-solid
-                                        fa-cloud-sun-rain"></i> Weather
-                                    Dashboard</h1>
-                            </span>
-                        </div>
-                    </nav>
-                </header>
+            <!-- Nav Header -->
+            <header>
+                <nav class="navbar bg-dark">
+                    <div class="container-fluid">
+                        <span class="navbar-brand mb-0 h1">
+                            <h1 class="text-bg-dark p-3"><i class="fa-solid
+                                    fa-cloud-sun-rain"></i> Weather
+                                Dashboard</h1>
+                        </span>
+                    </div>
+                </nav>
+            </header>
 
-                <br>
-                <!-- Search for a city -->
-                <main class="row d-flex justify-content-around">
-                    <!-- <div class="container justify-content-start"> -->
-                    <div class="sidebar col-4 col-md-3 col-lg-2">
-                        <div class="card" style="width: 22rem;">
-                            <div class="card-body">
-                                <h3>Search for a City:</h3>
-                                    <form class="flex-column d-grid gap-2">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" id="city-input">
-                                        </div>
-                                            <button id="search-button" type="submit" class="btn btn-primary">
-                                                <h5><i class="fas fa-search"></i> Search</h5>
-                                            </button>
-                                    </form>
-                                <div id="search-history"class="city-search-history"></div>
-                             </div>
+            <br>
+            <!-- Search for a city -->
+            <main class="row d-flex justify-content-around">
+                <!-- <div class="container justify-content-start"> -->
+                <div class="sidebar col-md-3 grid">
+                    <div class="card g-col-4" >
+                        <div class="card-body">
+                            <h3 class="text-center">Search for a City:</h3>
+                            <form class="flex-column d-grid gap-2">
+                                <div class="form-group">
+                                    <input type="text" class="form-control"
+                                        id="city-name">
+                                </div>
+                                <button id="search-button" type="submit"
+                                    class="btn btn-primary">
+                                    <h5><i class="fas fa-search"></i> Search</h5>
+                                </button>
+                            </form>
+                            <div id="past-searches" class="city-search-history"></div>
                         </div>
                     </div>
+                </div>
 
 
                 <!-- current city weather card -->
-                
-                <div class="forecast flex-column col-6 col-md-7 col-lg-8">
+
+                <div class="forecast flex-column col-8 col-md-7 col-lg-8">
                     <h2>Current Weather for:</h2>
-                    <div id="current-weather" class="col-12 border bg-white">
-                        <p id="city"><span id="current-city"></span><span
+                    <div id="present-weather" class="col-10 border bg-white">
+                        <p id="city-current"><span id="city-current"></span><span
                                 id="date-now"></span><img id="current-icon" />
                         </p>
                         <p>Temp: <span id="current-temp"></span></p>
                         <p>Wind: <span id="current-wind"></span></p>
                         <p>Humidity: <span id="current-humidity"></span></p>
                     </div>
-                    <!-- <div id="weatherfc" class="col-8 col-md-9 col-lg-10">
-         <div id="current-weather" class="card col-12 border-success">
-            <div class="card-body">
-              .
-            </div>
-          </div>
-        </div> -->
-                    <!-- <div class="col-8 col-md-9 col-lg-10">
-                <div id="current-weather" class="card">
-                    <div class="card-body">
-                        <div id="city-date-icon">
-                            <span id="city-name">
-                            </span>
-                            <span id="current-icon"></span>
-                        </div>
-                        <p class="card-text" id="current-temp"></p>
-                        <p class="card-text" id="current-humidity"></p>
-                        <p class="card-text" id="current-wind"></p>
-                        <p class="card-text" id="current-uv"></p>
-                        </ul>
-                    </div>
-                </div> -->
-                    <!-- 5 Days of weather cards -->
+            
+                <!-- five day forecast -->
+                <div id="forecast-weather">
+                    <h2>5-Day Forecast</h2>
+                <div class="grid text-center mt-4 ms-auto d-flex justified-content-between">
                     <div class="row">
+                      <div class="col-2">
+                        <div id="forecast-cards" class="">
+                            <div class="forecast card border-info mb-3 g-col-1">
+                                <div class="card-header">MONDAY</div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Info card title</h5>
+                                    <p class="card-text">Some quick example text to build on the
+                                        card title and make up the bulk of the card's content.</p>
+                                </div>
+                            </div>
+                            </div>
+                      </div>
+                      <div class="col-2">
+                        <div id="forecast-cards" class="">
+                            <div class="forecast card border-info mb-3 g-col-1">
+                                <div class="card-header">TUESDAY</div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Info card title</h5>
+                                    <p class="card-text">Some quick example text to build on the
+                                        card title and make up the bulk of the card's content.</p>
+                                </div>
+                            </div>
+                            </div>
+                      </div>
+                      <div class="col-2">
+                        <div id="forecast-cards" class="">
+                            <div class="forecast card border-info mb-3 g-col-1">
+                                <div class="card-header">WEDNESDAY</div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Info card title</h5>
+                                    <p class="card-text">Some quick example text to build on the
+                                        card title and make up the bulk of the card's content.</p>
+                                </div>
+                            </div>
+                            </div>
+                      </div>
+                      <div class="col-2">
+                        <div id="forecast-cards" class="">
+                            <div class="forecast card border-info mb-3 g-col-1">
+                                <div class="card-header">THURSDAY</div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Info card title</h5>
+                                    <p class="card-text">Some quick example text to build on the
+                                        card title and make up the bulk of the card's content.</p>
+                                </div>
+                            </div>
+                            </div>
+                      </div>
+                      <div class="col-2">
+                        <div id="forecast-cards" class="">
+                            <div class="forecast card border-info mb-3 g-col-1">
+                                <div class="card-header">FRIDAY</div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Info card title</h5>
+                                    <p class="card-text">Some quick example text to build on the
+                                        card title and make up the bulk of the card's content.</p>
+                                </div>
+                            </div>
+                            </div>
+                      </div>
+                    </div>
+                </div>
+            
+                
+                   
+
+
+
+                    
+                    <!-- 5 Days of weather cards -->
+                    <!-- <div class="row">
                         <div id="forecast-weather" class="col-md-9">
-                            <h2>5-Day Forecast:</h2>
+                            <h2 class="text-center">5-Day Forecast</h2>
                             <div id="forecast-cards">
                                 <div class="card forecast">
                                     <div id="forecast1" class="card-body">
@@ -162,7 +217,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -181,3 +236,4 @@
     </body>
 
 </html>
+
